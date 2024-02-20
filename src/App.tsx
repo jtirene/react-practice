@@ -1,5 +1,5 @@
 import './App.css'
-import GarageDoor from './exercises/garage-door/GarageDoor'
+import ContextStateReducer from './exercises/context-state-reducer/ContextStateReducer'
 
 function App() {
 	return (
@@ -16,7 +16,8 @@ function App() {
 					height: '1450px',
 				}}
 			>
-				<GarageDoor secondsToOpen={3} tickDurationMilliseconds={1000 / 60} />
+				{/* <GarageDoor secondsToOpen={3} tickDurationMilliseconds={1000 / 60} /> */}
+				<ContextStateReducer />
 			</div>
 		</div>
 	)
