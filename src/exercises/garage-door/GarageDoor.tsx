@@ -8,25 +8,20 @@ type DoorStatus =
 	| 'stopped-opening'
 	| 'stopped-closing'
 
-const GarageDoor = ({
-	doorWidth,
-	doorHeight,
+const useGarageDoorController = ({
 	secondsToOpen = 3,
 	tickDurationMilliseconds = 1000 / 60,
 }: {
-	doorWidth: number
-	doorHeight: number
 	secondsToOpen: number
 	tickDurationMilliseconds: number
 }) => {
-	const [height, setHeight] = useState(doorHeight)
+	const [height, setHeight] = useState(100)
 	const [status, setStatus] = useState<DoorStatus>('closed')
 
 	const ticksToOpen = (secondsToOpen * 1000) / tickDurationMilliseconds
-	const moveHeightPerTick = doorHeight / ticksToOpen
+	const moveHeightPerTick = 100 / ticksToOpen
 
 	const tick = () => {
-		// console.log(`tick - [${status}, ${height}]`)
 		switch (status) {
 			case 'opening':
 				if (height - moveHeightPerTick < 0) {
@@ -37,9 +32,9 @@ const GarageDoor = ({
 				}
 				break
 			case 'closing':
-				if (height + moveHeightPerTick > doorHeight) {
+				if (height + moveHeightPerTick > 100) {
 					setStatus('closed')
-					setHeight(doorHeight)
+					setHeight(100)
 				} else {
 					setHeight(height + moveHeightPerTick)
 				}
@@ -60,8 +55,7 @@ const GarageDoor = ({
 		return () => clearInterval(interval)
 	}, [height, status])
 
-	const onActivate = () => {
-		// console.log(`onActivate - [${status}, ${height}]`)
+	const activate = () => {
 		switch (status) {
 			case 'open':
 				setStatus('closing')
@@ -84,20 +78,67 @@ const GarageDoor = ({
 		}
 	}
 
+	const open = () => {
+		if (height > 0) {
+			setStatus('opening')
+		}
+	}
+
+	const close = () => {
+		if (height < 100) {
+			setStatus('closing')
+		}
+	}
+
+	return {
+		height,
+		status,
+		activate,
+		open,
+		close,
+	}
+}
+
+const GarageDoor = ({
+	secondsToOpen,
+	tickDurationMilliseconds,
+}: {
+	secondsToOpen: number
+	tickDurationMilliseconds: number
+}) => {
+	const { status, height, activate, open, close } = useGarageDoorController({
+		secondsToOpen,
+		tickDurationMilliseconds,
+	})
+
 	return (
 		<div
 			style={{
 				display: 'flex',
 				flexDirection: 'column',
 				gap: '20px',
+				height: '100%',
 			}}
 		>
-			<button onClick={onActivate}>Push</button>
 			<div
 				style={{
+					display: 'flex',
+					justifyContent: 'center',
+					gap: '20px',
+				}}
+			>
+				<button onClick={open}>/\</button>
+				<button onClick={activate}>Activate</button>
+				<button onClick={close}>\/</button>
+			</div>
+			<div>
+				{status} - {Math.ceil(height)}
+			</div>
+			<div
+				style={{
+					flexGrow: 1,
 					position: 'relative',
-					width: `${doorWidth}px`,
-					height: `${doorHeight}px`,
+					height: '100%',
 					backgroundColor: 'blue',
 				}}
 			>
@@ -106,7 +147,7 @@ const GarageDoor = ({
 						position: 'absolute',
 						top: 0,
 						width: '100%',
-						height: `${Math.ceil((height / doorHeight) * 100)}%`,
+						height: `${Math.ceil((height / 100) * 100)}%`,
 						backgroundColor: 'grey',
 					}}
 				></div>
