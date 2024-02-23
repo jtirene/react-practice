@@ -98,7 +98,6 @@ const Breadcrumb = () => {
 		.reverse()
 
 	let remainingPathname = pathname
-	console.log('remainingPathname', remainingPathname)
 	const crumbs: {
 		name: string
 		path: string
@@ -109,7 +108,6 @@ const Breadcrumb = () => {
 			path: remainingPathname,
 		})
 		remainingPathname = remainingPathname.replace(`/${pathSegment}`, '')
-		console.log('remainingPathname', remainingPathname)
 	}
 
 	return (
@@ -120,12 +118,12 @@ const Breadcrumb = () => {
 				</Link>
 			</span>
 			{crumbs.reverse().map((crumb) => (
-				<>
+				<span key={crumb.path} className="flex gap-2">
 					<span>/</span>
 					<Link to={crumb.path}>
 						<span>{crumb.name}</span>
 					</Link>
-				</>
+				</span>
 			))}
 		</div>
 	)
