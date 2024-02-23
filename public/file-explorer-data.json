@@ -1,0 +1,118 @@
+{
+	"type": "directory",
+	"name": "Home",
+	"children": {
+		"Documents": {
+			"type": "directory",
+			"name": "Documents",
+			"children": {
+				"Work": {
+					"type": "directory",
+					"name": "Work",
+					"children": {
+						"Report.docx": {
+							"type": "file",
+							"size": "1.9 MB",
+							"name": "Report.docx"
+						},
+						"Presentation.pptx": {
+							"type": "file",
+							"size": "2.2 MB",
+							"name": "Presentation.pptx"
+						},
+						"Spreadsheet.xlsx": {
+							"type": "file",
+							"size": "1.1 MB",
+							"name": "Spreadsheet.xlsx"
+						}
+					}
+				},
+				"Personal": {
+					"type": "directory",
+					"name": "Personal",
+					"children": {
+						"Photos": {
+							"type": "directory",
+							"name": "Photos",
+							"children": {
+								"SummerVacation.jpg": {
+									"type": "file",
+									"size": "2.3 MB",
+									"name": "SummerVacation.jpg"
+								},
+								"FamilyPortrait.jpg": {
+									"type": "file",
+									"size": "2.3 MB",
+									"name": "FamilyPortrait.jpg"
+								},
+								"Selfie.jpg": {
+									"type": "file",
+									"size": "2.3 MB",
+									"name": "Selfie.jpg"
+								}
+							}
+						},
+						"Journal.txt": {
+							"type": "file",
+							"name": "Journal.txt"
+						},
+						"Recipes": {
+							"type": "directory",
+							"name": "Recipes",
+							"children": {
+								"Desserts.txt": {
+									"type": "file",
+									"size": "1.2 KB",
+									"name": "Desserts.txt"
+								},
+								"Dinners.txt": {
+									"type": "file",
+									"size": "1.2 KB",
+									"name": "Dinners.txt"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"Music": {
+			"type": "directory",
+			"name": "Music",
+			"children": {
+				"Rock": {
+					"type": "directory",
+					"name": "Rock",
+					"children": {
+						"Song1.mp3": {
+							"type": "file",
+							"size": "1.2 MB",
+							"name": "Song1.mp3"
+						},
+						"Song2.mp3": {
+							"type": "file",
+							"size": "1.2 MB",
+							"name": "Song2.mp3"
+						},
+						"Concerts.txt": {
+							"type": "file",
+							"size": "1.2 KB",
+							"name": "Concerts.txt"
+						}
+					}
+				},
+				"Pop": {
+					"type": "directory",
+					"name": "Pop",
+					"children": {
+						"Song3.mp3": {
+							"type": "file",
+							"size": "1.2 MB",
+							"name": "Song3.mp3"
+						}
+					}
+				}
+			}
+		}
+	}
+}
